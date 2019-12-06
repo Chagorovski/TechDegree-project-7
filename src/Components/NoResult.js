@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Shows not found if there is no match
 const NoResult = () => {
   return (
     <li className="not-found">

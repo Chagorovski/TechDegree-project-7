@@ -1,5 +1,6 @@
 import React from 'react';
 
+// return image with props from parent component
 const Photo = props => {
   return (
     <li>
