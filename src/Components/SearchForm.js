@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
 
 	state = {
 		searchText: ''
@@ -12,9 +13,12 @@ export default class SearchForm extends Component {
 	}
 
 	// Method to store the searched value and stop refreshing the page
+	// and searched text  in the history
 	handleSubmit = e => {
 		e.preventDefault();
-    	this.props.onSearch(this.query.value);
+		this.props.onSearch(this.query.value);
+		let path = this.state.searchText;
+        this.props.history.push(path);
     	e.currentTarget.reset();
 	}
 
@@ -38,3 +42,5 @@ export default class SearchForm extends Component {
 		);
 	}
 }
+
+export default withRouter(SearchForm)

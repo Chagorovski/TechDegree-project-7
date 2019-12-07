@@ -22,11 +22,12 @@ class App extends Component {
 
   //Lifecycle method to update the state
   componentDidMount() {
-    this.performSearch();
+      this.performSearch();
   }
 
   // Method to fetch the flicker endpoint and updating the state
-  performSearch = (query = 'world')  => {
+  performSearch = (query)  => {
+    this.setState({loading: true});
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=${query}&api_key=${apiKey}&safe_search=1&per_page=24&format=json&nojsoncallback=1`)
       .then(res => {
         this.setState({
@@ -37,24 +38,26 @@ class App extends Component {
       .catch(err => {
         console.log('There was an error while fetching and parsing the data', err);
       });
-  }
-
-  render() {
+    }
     
-    return (
-      <Router>
-        <div className="container">
-         <Route path={'/'} render={ () => <Header onSearch={ this.performSearch } />}/> 
-          <Switch>
-            {this.state.loading ? <Spiner /> : null}
-            <Route exact path="/" render={() => <Redirect to="/world" />} />
-            <Route exact path="/world" render={() => <PhotoContainer data={this.state.photos} />} />
-            <Route exact path="/wide" render={ () => <PhotoContainer data={this.state.photos} /> } />
-            <Route exact path="/window" render={ () => <PhotoContainer data={this.state.photos}  /> } />
-            <Route component={ NotFound }/>
-          </Switch>
-        </div>
-      </Router>
+    render() {
+
+      return (
+      <div className="container">
+        <Router>
+          <Route path="/" render={ () => <Header onSearch={ this.performSearch } />}/> 
+      {(this.state.loading) ? <Spiner /> : 
+            <Switch>
+              <Route exact path="/" render={() => <Redirect to="/world" />} />
+              <Route exact path="/world" render={() => <PhotoContainer data={this.state.photos} />} />
+              <Route exact path="/wide" render={() => <PhotoContainer data={this.state.photos} />} />
+              <Route exact path="/window" render={() => <PhotoContainer data={this.state.photos} />} />
+              <Route exact path="/:query" render={() => <PhotoContainer data={this.state.photos} />} />
+              <Route component={ NotFound }/>
+            </Switch>
+      }
+        </Router>
+      </div>
     )
   }
 }
