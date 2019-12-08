@@ -1,7 +1,7 @@
 ## Techdegree-Project-7
 ---
 ![project 7](mockups/gif.gif)
-[Live prewiev](https://chagorovski.github.io/TechDegree-project-7/)
+
 
 To work with this app you need to request for API key from [flicker.com](https://www.flickr.com/services/apps/create/apply/)
 - Add   ```config.js```  file  to the ```src``` folder and export it
