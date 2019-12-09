@@ -16,6 +16,7 @@ class App extends Component {
     super();
     this.state = {
       photos: [],
+      query: '',
       loading: true,
     };
   } 
@@ -32,8 +33,10 @@ class App extends Component {
       .then(res => {
         this.setState({
           photos: res.data.photos.photo,
+          query: query,
           loading: false,
         })
+        console.log(this.state.query)
       })
       .catch(err => {
         console.log('There was an error while fetching and parsing the data', err);
@@ -49,10 +52,10 @@ class App extends Component {
       {(this.state.loading) ? <Spiner /> : 
             <Switch>
               <Route exact path="/" render={() => <Redirect to="/world" />} />
-              <Route exact path="/world" render={() => <PhotoContainer data={this.state.photos} />} />
-              <Route exact path="/wide" render={() => <PhotoContainer data={this.state.photos} />} />
-              <Route exact path="/window" render={() => <PhotoContainer data={this.state.photos} />} />
-              <Route exact path="/:query" render={() => <PhotoContainer data={this.state.photos} />} />
+              <Route exact path="/world" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
+              <Route exact path="/wide" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
+              <Route exact path="/window" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
+              <Route exact path="/:query" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
               <Route component={ NotFound }/>
             </Switch>
       }
