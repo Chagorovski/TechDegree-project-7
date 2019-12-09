@@ -36,7 +36,6 @@ class App extends Component {
           query: query,
           loading: false,
         })
-        console.log(this.state.query)
       })
       .catch(err => {
         console.log('There was an error while fetching and parsing the data', err);
@@ -55,7 +54,7 @@ class App extends Component {
               <Route exact path="/world" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
               <Route exact path="/wide" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
               <Route exact path="/window" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
-              <Route exact path="/:query" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
+              <Route exact path="/search/:word" render={() => <PhotoContainer data={this.state.photos} query={this.state.query} />} />
               <Route component={ NotFound }/>
             </Switch>
       }

@@ -8,8 +8,7 @@ const PhotoContainer = props => {
   // variables to store props and photos
   const results = props.data;
   let photos;
-  console.log(props)
-
+ 
   if ( results.length > 0) {
     photos = results.map( photo => <Photo {...photo} key={photo.id} />);
   } else {
