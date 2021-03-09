@@ -25,7 +25,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Techniques and concepts
 - JSX
 - React Router
-- Fetch API
 - Axios used to feetch external API
 
 
