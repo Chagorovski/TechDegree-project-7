@@ -29,7 +29,7 @@ class App extends Component {
   // Method to fetch the flicker endpoint and updating the state
   performSearch = (query)  => {
     this.setState({loading: true});
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=${query}&api_key=${apiKey}&safe_search=1&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=${query}&api_key=${apiKey}&safe_search=1&per_page=34&format=json&nojsoncallback=1`)
       .then(res => {
         this.setState({
           photos: res.data.photos.photo,

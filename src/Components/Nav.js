@@ -10,19 +10,19 @@ const Nav = props => {
         <ul>
           <li><NavLink 
                 exact to="/world" 
-                activeStyle={{ fontWeight: "bold",color: "red"}}
+                activeStyle={{ fontWeight: "bold",color: "lightblue"}}
                 onClick={() => props.onSearch("world")}>World
               </NavLink>
           </li>
           <li><NavLink
                 exact to="/wide" 
-                activeStyle={{ fontWeight: "bold",color: "red"}} 
+                activeStyle={{ fontWeight: "bold",color: "lightblue"}} 
                 onClick={() => props.onSearch("wide")}>Wide
               </NavLink>
           </li>
           <li><NavLink 
                 exact to="/window" 
-                activeStyle={{ fontWeight: "bold",color: "red"}} 
+                activeStyle={{ fontWeight: "bold",color: "lightblue"}} 
                 onClick={() => props.onSearch("window")}>Window
               </NavLink>
           </li>
